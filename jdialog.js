@@ -21,7 +21,19 @@
     jDialog = function() {
       this.VERSION = "1.0.0";
       this.options = {
-        useAlertify: false,
+        title: "jDialog",
+        shade: [0.2, "#000"],
+        shadeClose: false,
+        shift: 0,
+        maxmin: true,
+        fix: true,
+        btn: ["OK", "Cancel"],
+        closeBtn: 1,
+        tips: [1, '#f0ad4e'],
+        tipsTime: 3000,
+        loadingIcon: 1,
+        loadingShade: [0.6, "#fff"],
+        useAlertify: true,
         logPosition: "bottom right",
         closeLogOnClick: false
       };
