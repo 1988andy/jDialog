@@ -1,5 +1,5 @@
 ﻿###!
-# jjDialog v1.0.0
+# jjDialog v2.0.0
 # http://www.bndy.net
 #
 # Copyright (c) 2016 Bndy.Net, released under the MIT license
