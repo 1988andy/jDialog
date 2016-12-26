@@ -1,0 +1,19 @@
+﻿.bn-jdialog-loaded,
+.bn-jdialog-loading {
+    position: absolute;
+    top: 0;
+    left: 0;
+    text-align: center;
+    background: rgba(255,255,255,.8);
+    z-index: 9999;
+
+    .icon {
+    }
+
+    .text {
+    }
+}
+
+.bn-jdialog-loaded {
+    background-color: transparent;
+}

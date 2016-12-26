@@ -1,9 +1,9 @@
 ﻿###!
-# jjDialog v2.0.0
+# jDialog v2.0.0
 # http://www.bndy.net
-#
+# 
 # Copyright (c) 2016 Bndy.Net, released under the MIT license
-#
+# 
 # Requires: jQuery, layer
 ###
 
@@ -15,21 +15,9 @@
 
 
     jDialog = ->
-        @.VERSION = "1.0.0"
+        @.VERSION = "2.0.0"
         @.options =
-            title: "jDialog"
-            shade: [0.2, "#000"]
-            shadeClose: false
-            shift: 0    # 0-9
-            maxmin: true
-            fix: true
-            btn: ["OK", "Cancel"]
-            closeBtn: 1     #0-2
-            tips: [1, '#f0ad4e']
-            tipsTime: 3000
-            loadingIcon: 1      #0-2
-            loadingShade: [0.6, "#fff"]
-            useAlertify: true
+            useAlertify: false
             logPosition: "bottom right"
             closeLogOnClick: false
         @.init()
@@ -58,48 +46,48 @@
             @.options = $.extend {}, @.options, options
             @.init()
 
-        alert: (msg, callback)  ->
+        alert: (msg, callback, options)  ->
             root = @
-            options = $.extend {}, root.options, {
+            options = $.extend {}, options, root.options, {
                 btn: root.options.btn[0]
             }
             layer.alert msg, options, callback
 
-        success: (msg, callback) ->
+        success: (msg, callback, options) ->
             root = @
             if not root.options.useAlertify
-                options = $.extend {}, root.options, {
+                options = $.extend {}, options, root.options, {
                     icon: 1
                     btn: root.options.btn[0]
                 }
                 layer.alert msg, options, callback
             else
                 alertify.success msg
-        info: (msg, callback) ->
+        info: (msg, callback, options) ->
             root = @
             if not root.options.useAlertify
-                options = $.extend {}, root.options, {
+                options = $.extend {}, options, root.options, {
                     icon: 0
                     btn: root.options.btn[0]
                 }
                 layer.alert msg, options, callback
             else
-                alertify.log msg
+                alertify.log msg, options.wait, callback
 
-        error: (msg, callback) ->
+        error: (msg, callback, options) ->
             root = @
             if not root.options.useAlertify
-                options = $.extend {}, root.options, {
+                options = $.extend {}, options, root.options, {
                     icon: 2
                     btn: root.options.btn[0]
                 }
                 layer.alert msg, options, callback
             else
-                alertify.error msg
+                alertify.error msg, options.wait, callback
 
-        confirm: (msg, fnYes, fnCancel) ->
+        confirm: (msg, fnYes, fnCancel, options) ->
             root = @
-            options = $.extend {}, root.options, {
+            options = $.extend {}, options, root.options, {
                 icon: 3
             }
             layer.confirm msg, options, (index) ->
@@ -151,11 +139,11 @@
             root = @
             if selector
                 options = $.extend {}, {text: 'Loading...'}, options
-                html = $('<div class="bn-jDialog-loading"><i class="icon fa fa-spin fa-spinner"></i><span class="text">' + options.text + '</span></div>')
+                html = $('<div class="bn-jdialog-loading"><i class="icon fa fa-spin fa-spinner"></i> <span class="text">' + options.text + '</span></div>')
                 $(selector).each ->
-                    $(this).find('.bn-jDialog-loaded').remove()
-                    if $(this).find('.bn-jDialog-loading').length > 0
-                        $(this).find('.bn-jDialog-loading').show()
+                    $(this).find('.bn-jdialog-loaded').remove()
+                    if $(this).find('.bn-jdialog-loading').length > 0
+                        $(this).find('.bn-jdialog-loading').show()
                     else
                         h = html.clone()
                         $(this).height $(this).height()
@@ -176,13 +164,13 @@
             if selector
                 $(selector).each ->
                     if selectorContent
-                        $(this).children(':not(.bn-jDialog-loading)').remove()
-                        $(this).find('.bn-jDialog-loading')
-                          .removeClass('bn-jDialog-loading')
-                          .addClass('bn-jDialog-loaded')
+                        $(this).children(':not(.bn-jdialog-loading)').remove()
+                        $(this).find('.bn-jdialog-loading')
+                          .removeClass('bn-jdialog-loading')
+                          .addClass('bn-jdialog-loaded')
                           .html(selectorContent)
                     else
-                        $(this).find('.bn-jDialog-loading').remove()
+                        $(this).find('.bn-jdialog-loading').remove()
             else
                 layer.closeAll "loading"
             return
