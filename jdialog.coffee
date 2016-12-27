@@ -4,7 +4,7 @@
 # 
 # Copyright (c) 2016 Bndy.Net, released under the MIT license
 # 
-# Requires: jQuery, layer
+# Requires: jQuery, layer, alertifyjs[optional]
 ###
 
 ((window)->
@@ -17,7 +17,21 @@
     jDialog = ->
         @.VERSION = "2.0.0"
         @.options =
-            useAlertify: false
+            title: "jDialog v2"
+            shade: [0.2, "#000"]
+            shadeClose: false
+            shift: 0    # 0-9
+            maxmin: true
+            fix: true
+            btn: ["OK", "Cancel"]
+            closeBtn: 1     #0-2
+            tips: [1, '#f0ad4e']
+            tipsTime: 3000
+            loadingIcon: 1      #0-2
+            loadingShade: [0.6, "#fff"]
+            
+            useAlertify: true
+            wait: 2
             logPosition: "bottom right"
             closeLogOnClick: false
         @.init()
@@ -55,32 +69,33 @@
 
         success: (msg, callback, options) ->
             root = @
+            options = $.extend {}, options, root.options, {
+                icon: 1
+                btn: root.options.btn[0]
+            }
             if not root.options.useAlertify
-                options = $.extend {}, options, root.options, {
-                    icon: 1
-                    btn: root.options.btn[0]
-                }
-                layer.alert msg, options, callback
+                layer.alert msg, options.wait, callback
             else
                 alertify.success msg
         info: (msg, callback, options) ->
             root = @
+            options = $.extend {}, options, root.options, {
+                icon: 0
+                btn: root.options.btn[0]
+            }
             if not root.options.useAlertify
-                options = $.extend {}, options, root.options, {
-                    icon: 0
-                    btn: root.options.btn[0]
-                }
                 layer.alert msg, options, callback
             else
+                console.debug options
                 alertify.log msg, options.wait, callback
 
         error: (msg, callback, options) ->
             root = @
+            options = $.extend {}, options, root.options, {
+                icon: 2
+                btn: root.options.btn[0]
+            }
             if not root.options.useAlertify
-                options = $.extend {}, options, root.options, {
-                    icon: 2
-                    btn: root.options.btn[0]
-                }
                 layer.alert msg, options, callback
             else
                 alertify.error msg, options.wait, callback

@@ -6,7 +6,7 @@
  * 
  * Copyright (c) 2016 Bndy.Net, released under the MIT license
  * 
- * Requires: jQuery, layer
+ * Requires: jQuery, layer, alertifyjs[optional]
  */
 
 (function() {
@@ -21,7 +21,20 @@
     jDialog = function() {
       this.VERSION = "2.0.0";
       this.options = {
-        useAlertify: false,
+        title: "jDialog v2",
+        shade: [0.2, "#000"],
+        shadeClose: false,
+        shift: 0,
+        maxmin: true,
+        fix: true,
+        btn: ["OK", "Cancel"],
+        closeBtn: 1,
+        tips: [1, '#f0ad4e'],
+        tipsTime: 3000,
+        loadingIcon: 1,
+        loadingShade: [0.6, "#fff"],
+        useAlertify: true,
+        wait: 2,
         logPosition: "bottom right",
         closeLogOnClick: false
       };
@@ -68,12 +81,12 @@
       success: function(msg, callback, options) {
         var root;
         root = this;
+        options = $.extend({}, options, root.options, {
+          icon: 1,
+          btn: root.options.btn[0]
+        });
         if (!root.options.useAlertify) {
-          options = $.extend({}, options, root.options, {
-            icon: 1,
-            btn: root.options.btn[0]
-          });
-          return layer.alert(msg, options, callback);
+          return layer.alert(msg, options.wait, callback);
         } else {
           return alertify.success(msg);
         }
@@ -81,24 +94,25 @@
       info: function(msg, callback, options) {
         var root;
         root = this;
+        options = $.extend({}, options, root.options, {
+          icon: 0,
+          btn: root.options.btn[0]
+        });
         if (!root.options.useAlertify) {
-          options = $.extend({}, options, root.options, {
-            icon: 0,
-            btn: root.options.btn[0]
-          });
           return layer.alert(msg, options, callback);
         } else {
+          console.debug(options);
           return alertify.log(msg, options.wait, callback);
         }
       },
       error: function(msg, callback, options) {
         var root;
         root = this;
+        options = $.extend({}, options, root.options, {
+          icon: 2,
+          btn: root.options.btn[0]
+        });
         if (!root.options.useAlertify) {
-          options = $.extend({}, options, root.options, {
-            icon: 2,
-            btn: root.options.btn[0]
-          });
           return layer.alert(msg, options, callback);
         } else {
           return alertify.error(msg, options.wait, callback);

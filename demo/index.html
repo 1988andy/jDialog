@@ -1,0 +1,113 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Demo for jDialog</title>
+    <meta charset="utf-8" />
+    <link href="../lib/layer/skin/layer.css" rel="stylesheet" />
+    <link href="../lib/alertifyjs/css/alertify.min.css" rel="stylesheet" />
+
+    <script src="../lib/jquery-1.12.4.min.js"></script>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+    <link href="../jdialog.css" rel="stylesheet" />
+</head>
+<body class="padding">
+    <button class="btn btn-primary"
+            onclick="dialog.alert('alert', function () { dialog.alert('callback'); })">
+        alert
+    </button>
+    <button class="btn btn-info"
+            onclick="dialog.info('info', function () { dialog.alert('callback'); })">
+        info
+    </button>
+    <button class="btn btn-success"
+            onclick="dialog.success('success', function () { dialog.alert('callback'); })">
+        success
+    </button>
+    <button class="btn btn-danger"
+            onclick="dialog.error('error', function () { dialog.alert('callback'); })">
+        error
+    </button>
+
+    <hr />
+
+    <button class="btn btn-default"
+            onclick="dialog.confirm('Are you OK?', function (idx) { dialog.success('Yes: ' + idx)}, function (idx) { dialog.alert('No: ' + idx) })">
+        confirm
+    </button>
+
+    <button class="btn btn-default"
+            onclick="dialog.prompt('Input:', function (val) { dialog.success('value: ' + val)}, 1)">
+        prompt textbox
+    </button>
+
+    <button class="btn btn-default"
+            onclick="dialog.prompt('Input:', function (val) { dialog.success('value: ' + val)}, 2)">
+        prompt textarea
+    </button>
+
+    <hr />
+
+    <button class="btn btn-default"
+            onclick="dialog.loading()">
+        loading
+    </button>
+    <br /><br />
+    <div class="panel panel-default" style="width:460px;">
+        <div class="panel-heading">
+            <div class="panel-title">
+                block loading
+                <button class="pull-right btn btn-sm" onclick="dialog.loading('#LoadedData', {text: 'Hi, I am loading data...'}); setTimeout(function () { dialog.loaded('#LoadedData', '<i class=\'fa fa-warning text-warning\'></i> No Data'); }, 10000);">
+                    Load
+                </button>
+            </div>
+        </div>
+        <div id="LoadedData" class="panel-body">
+            <div>Loaded Data</div>
+        </div>
+    </div>
+
+    <hr />
+
+    <div id="dialogForm" style="display:none;">
+        <form style="margin: 20px;">
+            <div class="form-group">
+                <label>Username</label>
+                <input class="form-control" />
+            </div>
+            <div class="form-group">
+                <label>Password</label>
+                <input class="form-control" />
+            </div>
+        </form>
+    </div>
+    <button class="btn btn-default"
+            onclick="dialog.show('#dialogForm', 'Form', ['30%', 248])">
+        Show Form
+    </button>
+
+    <button class="btn btn-default"
+            onclick="dialog.iframe('http://www.bing.com', 'Bing Search', ['80%', '80%'])">
+        Bing
+    </button>
+
+    <hr />
+
+    <button class="btn btn-default"
+            onclick="dialog.tip('dialog.tip', this)">
+        tip
+    </button>
+
+    <hr />
+
+    <script src="../lib/alertifyjs/js/alertify.js"></script>
+    <script src="../lib/layer/layer.js"></script>
+    <script src="../jdialog.js"></script>
+</body>
+</html>
