@@ -62,27 +62,27 @@
 
         alert: (msg, callback, options)  ->
             root = @
-            options = $.extend {}, options, root.options, {
+            options = $.extend {}, root.options, {
                 btn: root.options.btn[0]
-            }
+            }, options
             layer.alert msg, options, callback
 
         success: (msg, callback, options) ->
             root = @
-            options = $.extend {}, options, root.options, {
+            options = $.extend {}, root.options, {
                 icon: 1
                 btn: root.options.btn[0]
-            }
+            }, options
             if not root.options.useAlertify
                 layer.alert msg, options.wait, callback
             else
                 alertify.success msg
         info: (msg, callback, options) ->
             root = @
-            options = $.extend {}, options, root.options, {
+            options = $.extend {}, root.options, {
                 icon: 0
                 btn: root.options.btn[0]
-            }
+            }, options
             if not root.options.useAlertify
                 layer.alert msg, options, callback
             else
@@ -91,10 +91,10 @@
 
         error: (msg, callback, options) ->
             root = @
-            options = $.extend {}, options, root.options, {
+            options = $.extend {}, root.options, {
                 icon: 2
                 btn: root.options.btn[0]
-            }
+            }, options
             if not root.options.useAlertify
                 layer.alert msg, options, callback
             else
@@ -102,9 +102,9 @@
 
         confirm: (msg, fnYes, fnCancel, options) ->
             root = @
-            options = $.extend {}, options, root.options, {
+            options = $.extend {}, root.options, {
                 icon: 3
-            }
+            }, options
             layer.confirm msg, options, (index) ->
                 if fnYes
                     fnYes(index)
@@ -127,7 +127,7 @@
                 btn: null
                 closeBtn: 0
                 time: @.options.tipsTime
-            }
+            }, options
 
         show: (selector, title, size) ->
             root = @

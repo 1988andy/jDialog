@@ -73,18 +73,18 @@
       alert: function(msg, callback, options) {
         var root;
         root = this;
-        options = $.extend({}, options, root.options, {
+        options = $.extend({}, root.options, {
           btn: root.options.btn[0]
-        });
+        }, options);
         return layer.alert(msg, options, callback);
       },
       success: function(msg, callback, options) {
         var root;
         root = this;
-        options = $.extend({}, options, root.options, {
+        options = $.extend({}, root.options, {
           icon: 1,
           btn: root.options.btn[0]
-        });
+        }, options);
         if (!root.options.useAlertify) {
           return layer.alert(msg, options.wait, callback);
         } else {
@@ -94,10 +94,10 @@
       info: function(msg, callback, options) {
         var root;
         root = this;
-        options = $.extend({}, options, root.options, {
+        options = $.extend({}, root.options, {
           icon: 0,
           btn: root.options.btn[0]
-        });
+        }, options);
         if (!root.options.useAlertify) {
           return layer.alert(msg, options, callback);
         } else {
@@ -108,10 +108,10 @@
       error: function(msg, callback, options) {
         var root;
         root = this;
-        options = $.extend({}, options, root.options, {
+        options = $.extend({}, root.options, {
           icon: 2,
           btn: root.options.btn[0]
-        });
+        }, options);
         if (!root.options.useAlertify) {
           return layer.alert(msg, options, callback);
         } else {
@@ -121,9 +121,9 @@
       confirm: function(msg, fnYes, fnCancel, options) {
         var root;
         root = this;
-        options = $.extend({}, options, root.options, {
+        options = $.extend({}, root.options, {
           icon: 3
-        });
+        }, options);
         return layer.confirm(msg, options, function(index) {
           if (fnYes) {
             fnYes(index);
@@ -150,7 +150,7 @@
           btn: null,
           closeBtn: 0,
           time: this.options.tipsTime
-        }));
+        }, options));
       },
       show: function(selector, title, size) {
         var options, root;
