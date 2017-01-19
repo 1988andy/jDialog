@@ -1,4 +1,4 @@
-# [jDialog](https://github.com/bndynet/jdialog)
+ï»¿# [jDialog](https://github.com/bndynet/jdialog)
 
 A javascript framework for developing pretty browser dialogs and notifications. 
 
@@ -23,14 +23,14 @@ Within the download you'll find the following directories and files, logically g
 
 ```
 jDialog/
-©À©¤©¤ jdialog.coffee
-©À©¤©¤ jdialog.js
-©À©¤©¤ jdialog.min.js
-©À©¤©¤ jdialog.scss
-©À©¤©¤ jdialog.css
-©À©¤©¤ jdialog.min.css
-©À©¤©¤ demo/
-©¸©¤©¤ lib/
+â”œâ”€â”€ jdialog.coffee
+â”œâ”€â”€ jdialog.js
+â”œâ”€â”€ jdialog.min.js
+â”œâ”€â”€ jdialog.scss
+â”œâ”€â”€ jdialog.css
+â”œâ”€â”€ jdialog.min.css
+â”œâ”€â”€ demo/
+â””â”€â”€ lib/
 ```
 
 We provide compiled CSS and JS (`jdialog.*`), as well as compiled and minified CSS and JS (`jdialog.min.*`). 
@@ -90,4 +90,4 @@ closeLogOnClick: false
 
 
 
-Code and documentation (c) 2014-2017 [Bndy.Net](http://www.bndy.net). Code released under the MIT License. 
+Code and documentation (c) 2016 [Bndy.Net](http://www.bndy.net). Code released under the MIT License. 
