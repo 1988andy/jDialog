@@ -23,7 +23,6 @@ Within the download you'll find the following directories and files, logically g
 
 ```
 jDialog/
-angular-more/
 ├── dist/
 │   ├── jdialog.css
 │   ├── jdialog.min.css
@@ -42,9 +41,9 @@ We provide compiled CSS and JS (`jdialog.*`), as well as compiled and minified C
 
 ```html
 <!-- Latest compiled and minified CSS -->
-<link href="jdialog/jdialog.min.css" rel="stylesheet"/>
+<link href="dist/jdialog.min.css" rel="stylesheet"/>
 <!-- Latest compiled and minified JavaScript -->
-<script src="jdialog/jdialog.min.js"></script>
+<script src="dist/jdialog.min.js"></script>
 ```
 
 ```js
