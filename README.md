@@ -23,14 +23,16 @@ Within the download you'll find the following directories and files, logically g
 
 ```
 jDialog/
-├── jdialog.coffee
-├── jdialog.js
-├── jdialog.min.js
-├── jdialog.scss
-├── jdialog.css
-├── jdialog.min.css
+angular-more/
+├── dist/
+│   ├── jdialog.css
+│   ├── jdialog.min.css
+│   ├── jdialog.js
+│   └── jdialog.min.js
 ├── demo/
-└── lib/
+└── src/
+    ├── jdialog.scss
+    └── jdialog.coffee
 ```
 
 We provide compiled CSS and JS (`jdialog.*`), as well as compiled and minified CSS and JS (`jdialog.min.*`). 
