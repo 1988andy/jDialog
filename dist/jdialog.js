@@ -63,6 +63,20 @@
       }
       return size;
     },
+    _getDialogResult: function() {
+      if (parent) {
+        return parent.dialog_result;
+      } else {
+        return window.dialog_result;
+      }
+    },
+    _setDialogResult: function(result) {
+      if (parent) {
+        return parent.dialog_result = result;
+      } else {
+        return window.dialog_result = result;
+      }
+    },
     set: function(options) {
       this.options = $.extend({}, this.options, options);
       return this.init();
@@ -163,17 +177,24 @@
       });
       return layer.open(options);
     },
-    iframe: function(url, title, size) {
+    iframe: function(url, title, size, fnClose) {
       var options, root;
       root = this;
       if (!size || !$.isArray(size)) {
         size = ['50%', '50%'];
       }
       options = $.extend({}, root.options, {
+        title: title,
         type: 2,
         btn: null,
         area: root._wrapSize(size),
-        content: url
+        content: url,
+        end: function() {
+          if (fnClose && root._getDialogResult()) {
+            fnClose(root._getDialogResult());
+          }
+          return root._setDialogResult(null);
+        }
       });
       return layer.open(options);
     },
@@ -223,6 +244,9 @@
     },
     close: function(dialogResult) {
       var index;
+      if (typeof dialogResult !== 'undefined') {
+        this._setDialogResult(dialogResult);
+      }
       index = layer.getFrameIndex(window.name);
       layer.close(index);
       if (parent.layer) {
@@ -231,6 +255,9 @@
       }
     },
     closeAll: function(dialogResult) {
+      if (typeof dialogResult !== 'undefined') {
+        this._setDialogResult(dialogResult);
+      }
       layer.closeAll();
       if (parent.layer) {
         parent.layer.closeAll();

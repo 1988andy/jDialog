@@ -88,11 +88,36 @@
         </form>
     </div>
     <button class="btn btn-default"
-            onclick="dialog.show('#dialogForm', 'Form', ['30%', 248])">
+            onclick="dialog.show('#dialogForm', 'Form', ['30%', 248], function(result){ alert(result); })">
         Show Form
     </button>
 
     <button class="btn btn-default"
+            onclick="dialog.iframe('_form.html', 'Iframe Form', ['30%', 248], function(result){ alert(result); })">
+        Show Iframe Form
+    </button>
+
+    <button type="button" class="btn btn-default"
+            onclick="dialog.iframe('http://www.bing.com', 'Bing Search', ['80%', '80%'])">
+        Bing
+    </button>
+
+    <hr />
+
+    <button class="btn btn-default"
+            onclick="dialog.tip('dialog.tip', this)">
+        tip
+    </button>
+
+    <hr />
+
+    <script src="../lib/alertifyjs/js/alertify.js"></script>
+    <script src="../lib/layer/layer.js"></script>
+    <script src="../dist/jdialog.js"></script>
+</body>
+</html>
+
+    <button type="button" class="btn btn-default"
             onclick="dialog.iframe('http://www.bing.com', 'Bing Search', ['80%', '80%'])">
         Bing
     </button>

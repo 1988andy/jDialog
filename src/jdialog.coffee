@@ -49,6 +49,14 @@
         size = ['50%', '50%']
       return size
 
+    _getDialogResult: ->
+      if parent then parent.dialog_result else window.dialog_result
+    _setDialogResult: (result) ->
+      if parent
+        parent.dialog_result = result
+      else
+        window.dialog_result = result
+
     set: (options) ->
       @options = $.extend {}, @options, options
       @init()
@@ -132,14 +140,18 @@
         content: $(selector)
       }
       layer.open options
-    iframe: (url, title, size) ->
+    iframe: (url, title, size, fnClose) ->
       root = @
       size = ['50%', '50%'] if not size or not $.isArray size
       options = $.extend {}, root.options, {
-        type: 2,
+        title: title
+        type: 2
         btn: null
         area: root._wrapSize size
-        content: url,
+        content: url
+        end: ->
+          fnClose root._getDialogResult() if fnClose and root._getDialogResult()
+          root._setDialogResult null
       }
       layer.open options
 
@@ -183,6 +195,7 @@
         layer.closeAll "loading"
       return
     close: (dialogResult) ->
+      @_setDialogResult dialogResult if typeof dialogResult isnt 'undefined'
       index = layer.getFrameIndex window.name
       layer.close index
       if parent.layer
@@ -190,6 +203,7 @@
         parent.layer.close index
       return
     closeAll: (dialogResult) ->
+      @_setDialogResult dialogResult if typeof dialogResult isnt 'undefined'
       layer.closeAll()
       parent.layer.closeAll() if parent.layer
       return
