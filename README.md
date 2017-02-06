@@ -59,9 +59,11 @@ dialog.prompt(title, fnYes, formType);
 
 dialog.tip(msg, selector, options);
 dialog.show(selector, title, size);     //size: [600, 460], ["50%", "50%"]
-dialog.iframe(url, title, size);
+dialog.iframe(url, title, size, fnClose); //fnClose: function(dialogResult)
 dialog.loading(selector, options);
 dialog.loaded(selector, selectorContent);   //selectorContent: e.g. "No Data" 
+dialog.close(dialogResult);
+dialog.closeAll(dialogResult);
 ```
 
 #### options
