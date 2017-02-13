@@ -8,7 +8,7 @@
 
 
   jDialog = ->
-    @VERSION = "2.0.0"
+    @VERSION = "2.0"
     @options =
       title: "jDialog v2"
       shade: [0.2, "#000"]

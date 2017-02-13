@@ -1,5 +1,5 @@
 /*!
- * jdialog v2.0.0 
+ * jdialog v2.0 
  * https://github.com/BndyNet/jDialog#readme 
  * 
  * Copyright (c) 2016 Bndy.Net (http://www.bndy.net), released under the MIT license
@@ -16,7 +16,7 @@
     throw new Error('jDialog component requires layer');
   }
   jDialog = function() {
-    this.VERSION = "2.0.0";
+    this.VERSION = "2.0";
     this.options = {
       title: "jDialog v2",
       shade: [0.2, "#000"],
